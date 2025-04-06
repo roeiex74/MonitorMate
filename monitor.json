@@ -1,0 +1,60 @@
+{
+  "name": "Monitor",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the monitored entity"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "service",
+        "database",
+        "api",
+        "website",
+        "custom"
+      ],
+      "description": "Type of monitor"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "disabled",
+        "error"
+      ],
+      "default": "active"
+    },
+    "health": {
+      "type": "string",
+      "enum": [
+        "healthy",
+        "degraded",
+        "critical"
+      ],
+      "default": "healthy"
+    },
+    "last_check": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "configuration": {
+      "type": "object",
+      "properties": {
+        "check_interval": {
+          "type": "number",
+          "description": "Check interval in minutes"
+        },
+        "timeout": {
+          "type": "number",
+          "description": "Timeout in seconds"
+        }
+      }
+    }
+  },
+  "required": [
+    "name",
+    "type"
+  ]
+}
